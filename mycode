@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<title>Online HTML Editor</title>
+<head>
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+
+
+
+
+	
+	
+</head>
+<body>
+
+
+
+
+
+	
+	
+
+   
+		
+		
+
+  <form method="POST">
+      <div class="row">
+           <div class="col-sm-9">
+		     <button id = "button2" type="button" onclick="location.href='judgerating.php'" >
+Click too see total Judges Rating
+</button>
+               
+<table id= "test"  border="1" style="border-collapse: collapse; width: 75.3727%;"> 
+  <tbody> 
+   <tr> 
+    <td colspan="3" style="width: 100%; text-align: center;"><span style="font-size: 14pt;"><strong>Judge Rating system</strong></span></td> 
+   </tr> 
+   <tr> 
+    <td colspan="3" style="width: 100%;"> Enter your Group Memebers : <input type = "text" name = "groupmembers"  class ="data" id ="groupmembers" <form action ="#" required>   </td> 
+   </tr> 
+   <tr> 
+    <td style="width: 55.3666%; text-align: center;"><strong>Criteria</strong></td> 
+    <td   style="width: 15.8003%; text-align: center;"><strong>Developing score (0-10)</strong></td> 
+    <td style="width: 56.833%; text-align: center;"><strong>Accomplished score (11-20)</strong></td> 
+   </tr> 
+   <tr> 
+    <td style="width: 27.3666%;">Articulate requirements</td> 
+    <td style="width: 15.8003%;">&nbsp;  <label for="row1">Enter Score: </label>
+
+<input type="number" id="row1" class ="data"  name="row1" min ="0" max ="10" value ="0"><br><br></td> 
+    <td style="width: 36.833%;">&nbsp;     <label for="row2">Enter Score: </label>
+
+<input type="number" id="row2"  class ="data2" name="row2" min ="11" max ="20" value ="0"><br><br></td> 
+   </tr> 
+   <tr> 
+    <td style="width: 57.3666%;">Choose appropriate methods and tools</td> 
+    <td style="width: 15.8003%;">&nbsp;     <label for="row3">Enter Score: </label>
+
+<input type="number" id="row3" class ="data" name="row3" min ="0" max ="10" value ="0"><br><br></td> 
+    <td style="width: 36.833%;">&nbsp;     <label for="row4">Enter Score: </label>
+
+<input type="number" id="row4" class ="data2" name="row4" min ="11" max ="20" value ="0"><br><br></td> 
+   </tr> 
+   <tr> 
+    <td style="width: 57.3666%;">Give clear and coherent presentation</td> 
+    <td style="width: 35.8003%;">&nbsp;     <label for="row5">Enter Score: </label>
+
+<input type="number" id="row5" class ="data" name="row5" min ="0" max ="10" value ="0"><br><br></td> 
+    <td style="width: 36.833%;">&nbsp;     <label for="row6">Enter Score: </label>
+
+<input type="number" id="row6" class ="data2" name="row6" min ="11" max ="20" value ="0"><br><br></td> 
+   </tr> 
+   <tr> 
+    <td style="width: 27.3666%;">Functioned well as a team</td> 
+    <td style="width: 35.8003%;">&nbsp;     <label for="row7">Enter Score: </label>
+
+<input type="number" id="row7"  class ="data" name="row7" min ="0" max ="10" value ="0"><br><br></td> 
+    <td style="width: 36.833%;">&nbsp;     <label for="row8">Enter Score: </label>
+
+<input type="number" id="row8" class ="data2" name="row8" min ="11" max ="20" value ="0"><br><br></td> 
+   </tr> 
+   <tr> 
+    <td style="width: 27.3666%;">Complete report is submitted</td> 
+    <td style="width: 35.8003%;"  >&nbsp;      <label for="row9">Enter Score: </label>
+
+<input type="number" id="row9" class ="data"  name="row9" min ="0" max ="10" value ="0"><br><br></td> 
+    <td style="width: 36.833%;">&nbsp;     <label for="row10">Enter Score: </label>
+
+<input type="number" id="row10"  class ="data2" name="row10" min ="11" max ="20" value ="0" ><br><br></td> 
+   </tr> 
+   <tr> 
+
+
+
+    <div class="form-group">
+                                                        <label for="Username">Judge's Name :</label>
+                                                        <input id="judgename" name="judgename" type="text" class="form-control"  <form action ="#" required>
+                                                    </div>
+    
+    
+    
+ <td>    <button type="submit" onclick="validateForm()" name="submit" class="btn btn-primary mr-1 waves-effect waves-light">submit</button> </td> 
+ 
+
+
+
+ 
+ </form>
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ <?php  
+                                    include("db1.php");
+
+                                    if(isset($_POST['submit'])) 
+
+                                    {
+                                           $groupmembers = $_POST['groupmembers'];
+
+                                            $judgename = $_POST['judgename'];
+                                        $row1 = $_POST['row1'];
+                                        $row3 = $_POST['row3'];
+                                        $row5 = $_POST['row5'];
+                                        $row7 = $_POST['row7'];
+										$row9 = $_POST['row9'];
+										
+											$total = ($row1 + $row3 + $row5 + $row7 + $row9);
+										
+
+                                        $developavg =  ($row1 + $row3 + $row5 + $row7 + $row9)/5;
+
+                                       
+                                        $row2 = $_POST['row2'];
+                                        $row4 = $_POST['row4'];
+                                        $row6 = $_POST['row6'];
+                                        $row8 = $_POST['row8'];
+										$row10 = $_POST['row10'];
+                                        $accomplishedavg =  ($row2 + $row4 + $row6 + $row8 + $row10)/5;
+									
+										$total2 = ($row2 + $row4 + $row6 + $row8 + $row10);
+										$totalscore = ($total + $total2);
+
+
+
+                                        $sql =mysqli_query($db,"INSERT INTO judgerating (developavg,accomplishedavg,total,total2,groupmembers,judgename,totalscore)VALUES('$developavg','$accomplishedavg','$total','$total2','$groupmembers','$judgename','$totalscore')");
+
+
+
+
+                                        ?>
+
+
+
+
+       
+      
+</form>
+
+       <div class="row">
+                                                 <div class="col-sm-9">
+                                                     <div class="card-box">
+                                                                                     
+                                                         <div class="card-body ">
+                                                    <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                                                    <thead class="thead-light">
+                                                                        <th></th>
+                                                                        <th scope="col">Developing(0-10) Average</th>
+                                                                        <th scope="col">Accomplished(10-15) Average</th>
+                                                                    </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>   Total average score</td>
+                                                                <td> <strong> <?php echo $developavg; ?> </strong> </td>
+                                                                <td> <strong> <?php echo $accomplishedavg; ?> </strong></td>
+
+
+ <div class="row">
+                                                 <div class="col-sm-9">
+                                                     <div class="card-box">
+                                                                                     
+                                                         <div class="card-body ">
+                                                    <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                                                    <thead class="thead-light">
+                                                                        <th></th>
+                                                                        <th scope="col">Developing(0-10) Total </th>
+                                                                        <th scope="col">Accomplished(10-15) Total </th>
+                                                                    </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>   Total score</td>
+                                                                <td> <strong> <?php echo $total; ?> </strong> </td>
+                                                                <td> <strong> <?php echo $total2; ?> </strong></td>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+    <?php 
+                                    
+                                }
+                               
+                                                                   ?>
+   
+   </tr> 
+  </tbody> 
+ </table>
+ </form> 
+
+
+</body>
+</html>
